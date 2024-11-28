@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import MyButton from './components/Button';
+import MyInput from './components/Input';
+import MyArrowBack from './components/ArrowBack';
 
 function App() {
   return (
@@ -10,7 +12,19 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <MyArrowBack/>
+        <MyInput 
+                textLabel="Nome" 
+                typeInput="text" 
+                placeholder="Digite seu nome" 
+            />
+            <MyInput 
+                textLabel="Senha" 
+                typeInput="password" 
+                placeholder="Digite sua senha" 
+            />
         <MyButton colorButton="black" text="Cadastrar"/>
+        
         <a
           className="App-link"
           href="https://reactjs.org"
