@@ -2,7 +2,7 @@
   display: flex;
   height: 100vh;
   font-family: Arial, sans-serif;
-  position: relative; /* Permite posicionar o footer corretamente */
+  position: relative;
 }
 
 .login-form {
@@ -42,37 +42,37 @@
   text-decoration: underline;
 }
 
-/* Ajuste para que a imagem ocupe metade da tela */
+
 .login-image {
-  width: 45%; /* A imagem ocupa metade da tela */
-  height: 100vh; /* Garante que a altura da imagem seja 100% da altura da tela */
+  width: 45%; 
+  height: 100vh; 
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Garante que a imagem não ultrapasse o limite da área */
+  overflow: hidden; 
   position: relative;
 }
 
 .login-image img {
-  object-fit: cover;  /* A imagem vai cobrir toda a área disponível, mantendo sua proporção */
-  width: 100%;        /* Faz a imagem ocupar toda a largura da área */
-  height: 100%;       /* Faz a imagem ocupar toda a altura da área */
-  position: absolute; /* Posiciona a imagem de forma absoluta, cobrindo toda a área */
+  object-fit: cover;  
+  width: 100%;        
+  height: 100%;      
+  position: absolute; 
 }
 
 .border-form {
-  border: 0.1px solid rgb(165, 165, 165); /* Borda preta fina */
-  border-radius: 5px; /* Deixa as pontas arredondadas */
-  padding: 30px; /* Adiciona espaço interno entre o conteúdo e a borda */
+  border: 0.1px solid rgb(165, 165, 165); 
+  border-radius: 5px; 
+  padding: 30px; 
   padding-right: 100px;
-  background-color: #ffffff; /* Fundo branco */
+  background-color: #ffffff; 
 }
 
-/* Estilo para o footer */
+
 .footer {
   position: absolute;
-  bottom: 10px; /* Distância do fundo da tela */
-  left: 10px; /* Distância da esquerda */
+  bottom: 10px; 
+  left: 10px; 
   display: flex;
   align-items: center;
 }
@@ -81,30 +81,30 @@
   font-size: 20px;
   font-weight: bold;
   color: #212529;
-  margin-left: 10px; /* Espaço entre o nome e a logo */
+  margin-left: 10px; 
 }
 
 .logo-container .logo {
-  width: 30px; /* Tamanho da logo */
+  width: 30px; 
   height: auto;
 }
 
-  /* Estilo para o campo Tipo de usuário */
+
   .user-type-label {
     margin-top: 1rem;
     font-size: 1rem;
     color: #212529;
-    align-self: flex-start; /* Garante que o texto fique alinhado à esquerda */
+    align-self: flex-start; 
     width: 100%;
-    justify-content: st;  /* Garante que o texto ocupe toda a largura */
+    justify-content: st;  
   }
   
-  /* Estilo para as checkboxes de Aluno e Professor */
+
   .checkbox-container {
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
-    width: 100%;  /* Garante que as checkboxes ocupem toda a largura */
+    width: 100%;  
   }
   
   .checkbox-container label {

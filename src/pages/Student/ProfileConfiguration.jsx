@@ -6,8 +6,8 @@ import MyArrowBack from "../../components/ArrowBack";
 import MyButton from "../../components/Button";
 import MyInput from "../../components/Input";
 import MyCodeCourses from "../../components/CodeCourses";
-import "../Student/css/ProfileConfiguration.css";
-import profileConfiguration from '../Student/images/profile.png';
+import "../css/ProfileConfiguration.css";
+import profileConfiguration from '../../images/profile.png';
 
 export default function ProfileConfiguration(){
     return(

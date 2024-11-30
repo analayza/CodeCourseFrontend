@@ -1,5 +1,5 @@
 import './css/ArrowBack.css';
-import arrowback from './Image/arrowback.png';
+import arrowback from '../images/arrowback.png';
 
 export default function MyArrowBack(){
     return(

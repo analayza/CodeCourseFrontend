@@ -1,15 +1,15 @@
 .login-container {
     display: flex;
-    flex-direction: column; /* Adiciona título acima da caixa */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
     height: 100vh;
     font-family: Arial, sans-serif;
     background-color: #ffffff;
-    position: relative; /* Isso é necessário para o posicionamento absoluto do ArrowBack */
+    position: relative; 
   }
   
-  /* Estilo para a seta de voltar */
+  
   .arrow-back {
     position: absolute;
     top: 10px; 
@@ -32,9 +32,9 @@
     padding: 2rem;
     border: 1px solid rgb(165, 165, 165);
     border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
     width: 100%;
-    max-width: 400px; /* Largura máxima */
+    max-width: 400px; 
   }
   
   .login-form h3 {
@@ -52,33 +52,33 @@
   }
   
   .login-form-align-inputs input {
-    flex: 1; /* Cada input ocupa o mesmo espaço */
+    flex: 1;
   }
   
   .image-input {
-    max-width: 50%; /* Ajusta para que ocupe metade da linha */
+    max-width: 50%; 
   }
   
   .valor-input {
-    max-width: 50%; /* Ajusta para que ocupe metade da linha */
-    margin-left: 0; /* Remove qualquer espaçamento entre os dois inputs */
+    max-width: 50%; 
+    margin-left: 0; 
   }
 
   .description-input {
     display: flex;
     text-align: start;
     flex-direction: column;
-    gap: 0.5rem; /* Espaçamento entre o label e o textarea */
+    gap: 0.5rem; 
   }
   
   .description-textarea {
     width: 100%;
-    height: 150px; /* Define uma altura maior para a descrição */
+    height: 150px; 
     padding: 0.5rem;
     border: 1px solid #ffffff;
     border-radius: 4px;
-    box-sizing: border-box; /* Garante que padding seja incluído no tamanho total */
-    resize: none; /* Remove a opção de redimensionar */
+    box-sizing: border-box; 
+    resize: none; 
     font-family: Arial, sans-serif;
     font-size: 1rem;
   }
@@ -91,14 +91,14 @@
     border-radius: 4px;
     margin-bottom: 1rem;
     box-sizing: border-box;
-    white-space: nowrap; /* Evita quebra de texto */
-    overflow: hidden; /* Esconde texto extra caso necessário */
-    text-overflow: ellipsis; /* Indica com "..." caso o texto seja muito grande */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
   }
   
   .border-form textarea {
     height: 80px;
-    resize: none; /* Impede redimensionamento */
+    resize: none; 
   }
   
   .border-form {
