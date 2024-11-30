@@ -1,8 +1,8 @@
 import React from 'react';
 import '../../components/NavBar';
 import NavBar from '../../components/NavBar';
-import penguinImage from './image/piguimCodeCursos2.png';
-import './css/menu.css';
+import penguinImage from '../../images/piguimCodeCursos2.png';
+import '../css/menu.css';
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
 
 export default function Home(){

@@ -1,8 +1,9 @@
 import React from "react";
-import MyButton from "../components/Button"; // Caminho relativo para a pasta components
-import MyInput from "../components/Input";  // Caminho relativo para a pasta components
-import MyArrowBack from "../components/ArrowBack";  // Caminho relativo para a pasta components
-import "../components/css/CourseCreationPage.css"; // Estilo adicional para a página
+import MyButton from "../components/Button"; 
+import MyInput from "../components/Input";  
+import MyArrowBack from "../components/ArrowBack"; 
+import "../css/CourseCreationPage.css"; 
+import MyCodeCourses from "../../components/CodeCourses";
 
 export default function CourseCreationPage() {
   return (
@@ -47,17 +48,7 @@ export default function CourseCreationPage() {
         </div>
       </div>
 
-      {/* Rodapé com logo e nome CodeCursos */}
-      <div className="footer">
-        <div className="logo-container">
-          <img 
-            src={require('../components/Image/Codepen.png')} 
-            alt="Logo do CodeCursos" 
-            className="logo" 
-          />
-        </div>
-        <span className="footer-text">CodeCursos</span>
-      </div>
+      <MyCodeCourses/>
     </div>
   );
 }

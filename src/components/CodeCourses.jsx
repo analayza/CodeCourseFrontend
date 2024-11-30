@@ -6,7 +6,7 @@ export default function MyCodeCourses(){
             <div className="footer">
                 <div className="logo-container">
                     <img 
-                        src={require('../components/Image/Codepen.png')} 
+                        src={require('../images/Codepen.png')} 
                         alt="Logo do CodeCursos" 
                         className="logo" 
                     />
