@@ -1,12 +1,15 @@
-import React from "react";
-import LoginPage from "./pages/CourseCreationPage"; // Importe o componente LoginPage
-import "./App.css"; // Estilo para o App
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './pages/Student/home.jsx'
+import Home from './pages/Student/home.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <LoginPage /> {/* Renderiza a página de login */}
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home/>}></Route>
+      </Routes>
+    </Router>
   );
 }
 
