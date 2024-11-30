@@ -5,11 +5,12 @@ import Home from './pages/Student/home.jsx';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Home/>}></Route>
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+            <Route path='/' element={<Home/>}></Route>
+            <Route path='/profile' element={<ProfileConfiguration/>}></Route>
+        </Routes>
+      </Router>
   );
 }
 

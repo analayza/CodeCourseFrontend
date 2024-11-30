@@ -3,7 +3,7 @@
     flex-direction: column; 
     margin-bottom: 15px; 
     margin-left: 10px;
-    white-space: nowrap; /*adicionei para nao pular linha na hora e colocar o que tem escrito em cima do input*/
+    white-space: nowrap;
 }
 
 .labelInput {
@@ -19,6 +19,5 @@
     width: 335px;
     height: 28px;
     border-radius: 8px;
-    border: 1px solid gray;
-
+    border: 1px solid #d9d9d9;
 }
