@@ -8,3 +8,10 @@
     width: 30px;
     height: 30px;
 }
+
+.arrow-back {
+    position: absolute;
+    top: 10px; 
+    left: 10px; 
+    z-index: 10; 
+}
