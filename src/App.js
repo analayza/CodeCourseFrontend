@@ -4,6 +4,8 @@ import './pages/Student/home.jsx'
 import Home from './pages/Student/home.jsx';
 import ProfileConfiguration from './pages/Student/ProfileConfiguration.jsx';
 import UpdateCourse from './pages/Teacher/UpdateCourse.jsx';
+import UpdateModule from './pages/Teacher/UpdateModule.jsx';
+import UpdateModuleClass from './pages/Teacher/UpdateModuleClass.jsx';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Route path='/' element={<Home/>}></Route>
         <Route path='/Profile' element={<ProfileConfiguration/>}></Route>
         <Route path='/UpdateCourse' element={<UpdateCourse/>}></Route>
+        <Route path='/UpdateModule' element={<UpdateModule/>}></Route>
+        <Route path='/UpdateModuleClass' element={<UpdateModuleClass/>}></Route>
       </Routes>
     </Router>
   );
