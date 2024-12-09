@@ -7,6 +7,7 @@ import UpdateCourse from './pages/Teacher/UpdateCourse.jsx';
 import CourseDetails from './pages/CourseDetails.jsx';
 import UpdateModule from './pages/Teacher/UpdateModule.jsx';
 import UpdateModuleClass from './pages/Teacher/UpdateModuleClass.jsx';
+import NewModule from './pages/Teacher/NewModule.jsx';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/course-details/:id" element={<CourseDetails/>}></Route>
         <Route path='/UpdateModule' element={<UpdateModule/>}></Route>
         <Route path='/UpdateModuleClass' element={<UpdateModuleClass/>}></Route>
+        <Route path='/NewModule' element={<NewModule/>}></Route>
       </Routes>
     </Router>
   );

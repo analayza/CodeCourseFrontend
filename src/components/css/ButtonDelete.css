@@ -1,0 +1,12 @@
+.buttonDelete {
+    background: none;  
+    border: none;      
+    cursor: pointer;   
+    padding: 0;       
+
+  }
+  
+  .trash-icon {
+    color: black;         
+    font-size: 30px;     
+  }
