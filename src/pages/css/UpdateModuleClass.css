@@ -1,0 +1,88 @@
+.update-module-class-container{
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    height: 150px;
+    font-family: Arial, sans-serif;
+    background-color: #e62b2b;
+    margin-top: 130px;
+}
+
+.update-module-class-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 2rem;
+    border: 1px solid rgb(165, 165, 165);
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    max-width: 360px; 
+    height: 500px;
+    
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+    padding-right: 7px;
+}
+
+
+.button-module-class{
+    border: 1px solid rgb(165, 165, 165);
+    background-color: transparent;
+    border-radius: 8px;
+    height: 45px;
+    width: 380px;
+    margin: 10px;
+}
+
+.my-input{
+    font-size: 12px;
+    width: 375px;
+    height: 28px;
+    border-radius: 8px;
+    border: 1px solid #d9d9d9;
+}
+
+.input-name-module{
+    display: flex;
+    flex-direction: column; 
+    margin-bottom: 15px; 
+    margin-left: 1px;
+    white-space: nowrap;
+
+}
+
+.labelInput {
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-right: 310px;
+    color: black;
+
+}
+
+.form-container{
+    border: 1px solid rgb(165, 165, 165);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    margin-right: -1px;
+    width: 360px;
+}
+
+.form-update-module-class{
+    margin-left: 55px;
+    align-items: center; 
+    margin-top: -20px;
+}
+
+.button-update-module-class{
+    margin-top: 35px;
+}
