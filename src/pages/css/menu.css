@@ -1,29 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
-.body {
+body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.image-menu {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; 
+    box-sizing: border-box;
+    overflow-y: auto !important;
 }
 
 .image-menu img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
+    margin-top: -36px;
 }
 
 .listMyCourse{
-    flex: 1;
+    display: block;
     display: flex;
     margin-left: 20px;
 }
@@ -32,4 +22,24 @@
     font-family: 'Inter', sans-serif;
     font-size: 2rem;
     font-weight: 600;
+}
+
+.CourseSuggestions{
+    display: block;
+    margin-left: 210px;
+    width: auto;
+}
+
+.CourseSuggestions h1{
+    font-family: 'Inter', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: -60px;
+    margin-left: -195px;
+    margin-top: 50px;
+}
+
+.footer{
+    position: relative !important;
+    margin-top: 30px;
 }

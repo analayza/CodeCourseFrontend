@@ -20,9 +20,14 @@ export default function NavBar(){
                         alt="Avatar do usuário"
                         className="user-avatar"
                     />
-                    <span className="user-name">Pedrina <br></br> 
-                    <span className="user-role">Aluno(a)</span>
-                    </span>
+                    <button className="button-profile">
+                        <span className="user-name">Pedrina <br></br> 
+                            <span className="user-role">
+                                Aluno(a)
+                            </span>
+                        </span>
+                    </button>
+                    
                 </div>
             </div>
         </nav>
