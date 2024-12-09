@@ -6,6 +6,7 @@ import ProfileConfiguration from './pages/Student/ProfileConfiguration.jsx';
 import UpdateCourse from './pages/Teacher/UpdateCourse.jsx';
 import UpdateModule from './pages/Teacher/UpdateModule.jsx';
 import UpdateModuleClass from './pages/Teacher/UpdateModuleClass.jsx';
+import NewModule from './pages/Teacher/NewModule.jsx';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/UpdateCourse' element={<UpdateCourse/>}></Route>
         <Route path='/UpdateModule' element={<UpdateModule/>}></Route>
         <Route path='/UpdateModuleClass' element={<UpdateModuleClass/>}></Route>
+        <Route path='/NewModule' element={<NewModule/>}></Route>
       </Routes>
     </Router>
   );
