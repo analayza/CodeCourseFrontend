@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
-import Home from './pages/home.jsx';
 import ProfileConfiguration from './pages/Student/ProfileConfiguration.jsx';
 import UpdateCourse from './pages/Teacher/UpdateCourse.jsx';
 import CourseDetails from './pages/CourseDetails.jsx';
@@ -13,6 +12,8 @@ import ProfileConfigurationTeacher from './pages/Teacher/ProfileConfiguration.js
 import Login from './pages/LoginPage.jsx';
 import Register from './pages/RegisterPage.jsx';
 import NewModule from './pages/Teacher/NewModule.jsx';
+import Home from './pages/home.jsx';
+
 
 function App() {
   return (

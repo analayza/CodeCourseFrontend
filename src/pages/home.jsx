@@ -10,12 +10,13 @@ import Courses from '../components/courses';
 
 export default function Home(){
     const user = JSON.parse(sessionStorage.getItem("user"));
+    const name = user?.name
     const type = user?.type;
 
     if(type === "Aluno"){
         return(
             <>
-                <NavBar></NavBar>
+                <NavBar userName={name} userRole={type}></NavBar>
                 <div className='image-menu'>
                     <img src={penguinImage} alt="image_penguin"/>
                 </div>
@@ -36,7 +37,7 @@ export default function Home(){
     if(type === "Professor"){
         return(
             <>
-                <NavBar></NavBar>
+                <NavBar userName={name} userRole={type}></NavBar>
                 <div className='image-menu'>
                     <img src={penguinImage} alt="image_penguin"/>
                 </div>

@@ -1,7 +1,19 @@
 import React from "react";
 import './css/NavBar.css';
+import { useNavigate } from "react-router-dom";
 
-export default function NavBar(){
+export default function NavBar({ userName, userRole }){
+
+    const navigate = useNavigate();
+
+    const handleProfileClick = () => {
+        const user = JSON.parse(sessionStorage.getItem("user"));
+        console.log(user)
+        if (user) {
+            navigate('/Profile', { state: { user } });
+        }
+    };
+
     return(
         <nav className="navbar">
             <div className="navbar-container">
@@ -20,10 +32,10 @@ export default function NavBar(){
                         alt="Avatar do usuário"
                         className="user-avatar"
                     />
-                    <button className="button-profile">
-                        <span className="user-name">Pedrina <br></br> 
+                    <button className="button-profile" onClick={handleProfileClick}>
+                        <span className="user-name">{userName}<br></br> 
                             <span className="user-role">
-                                Aluno(a)
+                                {userRole}
                             </span>
                         </span>
                     </button>
