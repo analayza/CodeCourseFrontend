@@ -7,14 +7,14 @@ import MyCodeCourses from "../../components/CodeCourses";
 
 export default function UpdateCourse(){
     return(
-        <div className="update-courses-container ">
+        <div className="update-courses-container">
             <div className="arrow-back">
                     <MyArrowBack />
             </div>
         <h3 className="title">Atualizar Curso</h3>
         
         <div className="update-courses-form">
-            <div className="border-form">
+            <div className="border-forms">
                 <form>
                     <MyInput 
                     placeholder="Digite o novo nome do curso" 

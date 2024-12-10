@@ -27,7 +27,7 @@ export default function Home(){
                     <h1>Sugestões de Cursos:</h1>
                     <CourseSuggestions/>
                 </div>
-                <footer className='footer'>
+                <footer className='my-footer'>
                     <MyCodeCourses/>
                 </footer>
             </>
@@ -44,7 +44,7 @@ export default function Home(){
                     <h1>Meus Cursos:</h1>
                     <CourseByTeacher/>
                 </div>
-                <footer className='footer'>
+                <footer className='my-footer'>
                     <MyCodeCourses/>
                 </footer>
             </>

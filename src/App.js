@@ -1,6 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+
+import Home from './pages/home.jsx';
 import ProfileConfiguration from './pages/Student/ProfileConfiguration.jsx';
 import UpdateCourse from './pages/Teacher/UpdateCourse.jsx';
 import CourseDetails from './pages/CourseDetails.jsx';
@@ -10,7 +12,7 @@ import CourseCreation from './pages/Teacher/CourseCreationPage.jsx';
 import ProfileConfigurationTeacher from './pages/Teacher/ProfileConfiguration.jsx';
 import Login from './pages/LoginPage.jsx';
 import Register from './pages/RegisterPage.jsx';
-import Home from './pages/home.jsx';
+import NewModule from './pages/Teacher/NewModule.jsx';
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
         {/* <Route path='/ProfileConfigurationTeacher' element={<ProfileConfigurationTeacher/>}></Route> */}
         <Route path='/Login' element={<Login/>}></Route>
         <Route path='/Register' element={<Register/>}></Route>
+        <Route path='/NewModule' element={<NewModule/>}></Route>
       </Routes>
     </Router>
   );
