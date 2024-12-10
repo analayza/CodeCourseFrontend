@@ -3,10 +3,9 @@ import "../../components/ArrowBack";
 import "../../components/Button";
 import "../../components/Input";
 import MyArrowBack from "../../components/ArrowBack";
-
 import MyInput from "../../components/Input";
 import MyCodeCourses from "../../components/CodeCourses";
-import { updatePassword } from "../../services/Teacher/UpdatePassword"; // O caminho do serviço
+import { updatePasswordStudent, updatePasswordTeacher } from "../../services/UpdatePassword"; 
 import "../../pages/css/ProfileConfiguration.css";
 import profileConfiguration from '../../images/profile.png';
 import MyButton from "../../components/Button";
@@ -18,7 +17,7 @@ export default function ProfileConfiguration() {
 
     const handlePasswordUpdate = async () => {
         try {
-            const response = await updatePassword(oldPassword, newPassword);
+            const response = await updatePasswordTeacher(oldPassword, newPassword);
             setMessage("Senha atualizada com sucesso!");
             setOldPassword("");
             setNewPassword("");
