@@ -3,12 +3,13 @@ import "../../components/ArrowBack";
 import "../../components/Button";
 import "../../components/Input";
 import MyArrowBack from "../../components/ArrowBack";
-import MyButton from "../../components/Button";
+
 import MyInput from "../../components/Input";
 import MyCodeCourses from "../../components/CodeCourses";
 import { updatePassword } from "../../services/Teacher/UpdatePassword"; // O caminho do serviço
-import "../css/ProfileConfiguration.css";
+import "../../pages/css/ProfileConfiguration.css";
 import profileConfiguration from '../../images/profile.png';
+import MyButton from "../../components/Button";
 
 export default function ProfileConfiguration() {
     const [oldPassword, setOldPassword] = useState("");
@@ -58,13 +59,11 @@ export default function ProfileConfiguration() {
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
                     />
-                    <MyButton
-                        className="my-button"
+                    <MyButton className="my-button"
                         colorButton="black"
                         text="Redefinir Senha"
-                        onClick={handlePasswordUpdate}
-                    />
-                    <MyButton className="my-button red" colorButton="red" text="Excluir Conta" />
+                        onClick={handlePasswordUpdate}/>
+                    <MyButton className="my-button" colorButton="red" text="Excluir Conta"/>
                 </div>
 
                 {message && <p className="message">{message}</p>}

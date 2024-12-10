@@ -1,7 +1,7 @@
-import './css/Button.css';
+import './css/Button.css'
 
 export default function MyButton({colorButton, text}){
     return(
-        <button className="button" style={{background: colorButton}}>{text}</button>
+        <button className="my-button" style={{background: colorButton}}>{text}</button>
     );
 }

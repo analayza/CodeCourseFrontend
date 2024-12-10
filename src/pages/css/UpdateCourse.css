@@ -1,3 +1,6 @@
+body{
+    overflow: hidden !important;
+}
 .update-courses-container {
     display: flex;
     flex-direction: column; 
@@ -6,7 +9,6 @@
     height: 100vh;
     font-family: Arial, sans-serif;
     background-color: #ffffff;
-    
 }
 
 .title {
@@ -79,8 +81,8 @@
     font-size: 1rem;
 }
   
-.border-form input,
-.border-form textarea {
+.border-forms input,
+.border-forms textarea {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
@@ -92,12 +94,12 @@
     text-overflow: ellipsis; 
 }
   
-.border-form textarea {
+.border-forms textarea {
     height: 80px;
     resize: none; 
 }
   
-.border-form {
+.border-forms {
     width: 100%;
     display: flex;
     flex-direction: column;

@@ -81,11 +81,11 @@ export default function NewModule() {
 
                 <div className='button-new-module-class'>
                     <MyButton 
-                        className="my-button" 
-                        colorButton="black" 
-                        text="Salvar Módulo"
-                        onClick={handleSave}
-                    />
+                            className="my-button" 
+                            colorButton="black" 
+                            text="Salvar Módulo"
+                            onClick={handleSave}
+                        />
                 </div>
             <MyCodeCourses/>
         </div>
