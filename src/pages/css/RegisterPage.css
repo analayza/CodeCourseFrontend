@@ -1,128 +1,85 @@
-.login-container {
+.register-container {
   display: flex;
-  height: 100vh;
-  font-family: Arial, sans-serif;
-  position: relative;
+  height: 73vh;
 }
 
-.login-form {
-  flex: 1;
-  padding: 2rem;
+.register-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  background-color: #fff;
-  margin-left: 18%;
+  align-items: center;
+  width: 50%;
+  padding: 2rem;
+  position: relative;
 }
 
-.login-form h3 {
+.border-form {
+  width: 45%;
+  border: 0.1px solid rgb(165, 165, 165); 
+  border-radius: 5px; 
+  padding: 20px;
+}
+
+.button {
+  width: 100%;
+}
+
+.register-form h3 {
   margin: 0;
   color: #6c757d;
 }
 
-.login-form h1 {
+.register-form h1 {
   margin: 0.5rem 0 2rem;
-  font-size: 2rem;
-  color: #212529;
+  font-size: 36px;
+  color: #3f4c54;
 }
 
-.login-form form {
-  width: 100%;
-  max-width: 300px;
-  margin-bottom: 1rem;
+.register-image {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.login-form a {
+.register-image img {
+  width: 110%;
+}
+
+p {
+  margin-top: 1rem;
+}
+
+a {
   color: #007bff;
   text-decoration: none;
 }
 
-.login-form a:hover {
+a:hover {
   text-decoration: underline;
 }
 
-
-.login-image {
-  width: 45%; 
-  height: 100vh; 
+.radio-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; 
-  position: relative;
-}
-
-.login-image img {
-  object-fit: cover;  
-  width: 100%;        
-  height: 100%;      
-  position: absolute; 
-}
-
-.border-form {
-  border: 0.1px solid rgb(165, 165, 165); 
-  border-radius: 5px; 
-  padding: 30px; 
-  padding-right: 100px;
-  background-color: #ffffff; 
-}
-
-
-.footer {
-  position: absolute;
-  bottom: 10px; 
-  left: 10px; 
-  display: flex;
-  align-items: center;
-}
-
-.footer-text {
-  font-size: 20px;
-  font-weight: bold;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  font-size: 1rem;
   color: #212529;
-  margin-left: 10px; 
 }
 
-.logo-container .logo {
-  width: 30px; 
-  height: auto;
+.radio-container label {
+  display: flex;
+  align-items: start;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  padding-right: 70%;
 }
 
+.radio-container input {
+  margin-right: 0.5rem;
+}
 
-  .user-type-label {
-    margin-top: 1rem;
-    font-size: 1rem;
-    color: #212529;
-    align-self: flex-start; 
-    width: 100%;
-    justify-content: st;  
-  }
-  
-
-  .checkbox-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-    width: 100%;  
-  }
-  
-  .checkbox-container label {
-    font-size: 1rem;
-    color: #212529;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-  }
-  
-  .checkbox-container input {
-    margin-right: 10px;
-    
-  }
-
-  .arrow-back {
-    position: absolute;
-    top: 10px; 
-    left: 10px; 
-    z-index: 10; 
+.register-aluno-radio {
+  padding-right: 23%;
 }
