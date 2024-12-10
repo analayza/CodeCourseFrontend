@@ -14,6 +14,10 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const redirectToHome = () => {
+    navigate("/");
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -33,13 +37,7 @@ export default function LoginPage() {
 
       sessionStorage.setItem("user", JSON.stringify(user));
 
-      if (user.type === "Professor") {
-        navigate("/menu-professor");
-      } else if (user.type === "Aluno") {
-        navigate("/menu-aluno");
-      } else {
-        setError("Tipo de usuário desconhecido.");
-      }
+      navigate("/");
     } catch (err) {
       setError(err.message);
     }

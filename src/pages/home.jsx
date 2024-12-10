@@ -9,8 +9,8 @@ import Courses from '../components/courses';
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
 
 export default function Home(){
-
-    const type = "Aluno";
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const type = user?.type;
 
     if(type === "Aluno"){
         return(
