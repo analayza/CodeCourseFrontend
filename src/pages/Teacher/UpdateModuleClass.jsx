@@ -5,6 +5,7 @@ import MyCodeCourses from "../../components/CodeCourses";
 import MyArrowBack from "../../components/ArrowBack"; 
 import MyInput from '../../components/Input';
 import MyButton from "../../components/Button";
+import MyButtonDelete from '../../components/ButtonDelete';
 
 export default function UpdateModuleClass() {
     const [classes, setClasses] = useState([]);
@@ -44,13 +45,14 @@ export default function UpdateModuleClass() {
                     </div>
                     {classes.length > 0 ? (
                         classes.map((moduleClass) => (
-                            <div key={moduleClass.id}>
+                            <div key={moduleClass.id} className='container-buttons-update-module-class'>
                                 <button 
                                     className='button-module-class'
                                     onClick={() => handleModuleClick(moduleClass)}
                                 >
                                     {moduleClass.title}
                                 </button>
+                                <MyButtonDelete onClick={() => {}}/>
                             </div>
                         ))
                     ) : (

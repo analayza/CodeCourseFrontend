@@ -3,6 +3,7 @@ import { getModulesFromCourse } from "../../services/Teacher/UpdateModule";
 import '../css/UpdateModule.css'; 
 import MyCodeCourses from "../../components/CodeCourses";
 import MyArrowBack from "../../components/ArrowBack"; 
+import MyButtonDelete from '../../components/ButtonDelete';
 
 
 
@@ -39,14 +40,19 @@ export default function UpdateModule() {
                 <div className="update-module-list">
                     {modules.length > 0 ? (
                         modules.map((module) => (
-                        <div>
+                        <div className='container-buttons-update-module'>
                             <button className='button-module'
                                 key={module.id}
                                 onClick={() => alert(`Você clicou no módulo: ${module.title}`)}
                                 >
                                 {module.title} 
+                                
                             </button>
+                            
+                                <MyButtonDelete onClick={() => {}}/>
+                            
                         </div>
+                        
                         ))
                     ) : (
                         <p>Nenhum módulo disponível.</p>

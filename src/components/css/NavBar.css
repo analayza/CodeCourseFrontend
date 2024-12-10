@@ -2,6 +2,10 @@
     background-color: #0d1b34;
     padding: 10px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
   
   .navbar-container {
@@ -38,12 +42,19 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-right: 40px;
   }
   
   .user-name {
     color: #757575;
     font-size: 16px;
     font-weight: bold;
+  }
+
+  .button-profile{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
   }
 
   .user-role{
