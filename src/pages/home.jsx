@@ -6,12 +6,22 @@ import CourseSuggestions from '../components/CoursesSuggestions';
 import MyCodeCourses from '../components/CodeCourses';
 import CourseByTeacher from '../components/ListCourseByTeacher';
 import Courses from '../components/courses';
+import { useNavigate } from 'react-router-dom';
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
+
 
 export default function Home(){
     const user = JSON.parse(sessionStorage.getItem("user"));
     const name = user?.name
     const type = user?.type;
+    const navigate = useNavigate();
+
+    const handleCourseCreation = () => {
+        console.log(user)
+        if (user) {
+            navigate('/CourseCreation', { state: { user } });
+        }
+    };
 
     if(type === "Aluno"){
         return(
@@ -41,6 +51,9 @@ export default function Home(){
                 <div className='image-menu'>
                     <img src={penguinImage} alt="image_penguin"/>
                 </div>
+                <button className='buttonCreation' onClick={() => handleCourseCreation()}>
+                    +
+                </button>
                 <div className='listMyCourse'>
                     <h1>Meus Cursos:</h1>
                     <CourseByTeacher/>

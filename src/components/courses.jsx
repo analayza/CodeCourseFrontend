@@ -41,7 +41,8 @@ export default function Courses() {
   const visibleCourses = courses.slice(currentIndex, currentIndex + itemsPerPage);
 
   const handleCourseClick = (course) => {
-    navigate(`/course-details/${course.id}`, { state: { course } });
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    navigate(`/course-details/${course.id}`, { state: { course, user } });
   };  
 
   return (
