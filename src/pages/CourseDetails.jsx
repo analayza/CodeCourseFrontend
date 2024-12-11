@@ -51,6 +51,7 @@ function ListStudentCourseByTeacher(courseId) {
 export default function CourseDetails() {
     const location = useLocation();
     const course = location.state?.course;
+    console.log(course)
     const user = location.state?.user;
     const navitage = useNavigate();
     const type = user?.type;
@@ -197,6 +198,9 @@ export default function CourseDetails() {
                 </div>
                 <div className="div-buttons-update-delete" style={{display: visualizer}}>
                     <MyButton className="my-button" colorButton="green" text="Atualizar Módulo" onClick={handleCourseActualization}/>
+                <div className="div-buttons-update-delete" >
+                    <MyButton className="my-button" colorButton="green" text="Atualizar Curso" onClick={() => handleCourseActualization()}/>
+
                     <MyButton className="my-button" colorButton="red" text="Deletar Curso"/>
                 </div>
 

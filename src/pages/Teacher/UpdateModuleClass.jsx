@@ -6,16 +6,72 @@ import MyArrowBack from "../../components/ArrowBack";
 import MyInput from '../../components/Input';
 import MyButton from "../../components/Button";
 import MyButtonDelete from '../../components/ButtonDelete';
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import {deleteModuleClass} from "../../services/Teacher/DeleteModuleClass";
+import { updateModule } from '../../services/Teacher/ModuleUpdate';
+import { updateClass } from '../../services/Teacher/ClassUpdate.';
 
 export default function UpdateModuleClass() {
     const [classes, setClasses] = useState([]);
     const [selectedClass, setSelectedClass] = useState(null);
-    const moduleId = 1; 
+    const [classTitle, setClassTitle] = useState('');
+    const [classUrl, setClassUrl] = useState('');
+    const location = useLocation();
+    const module = location.state?.module;
+    console.log(module)
+    const navitage = useNavigate();
+    const [moduleTitle, setModuleTitle] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        // Verifique se module é válido e atribua os valores de forma adequada
+        if (!module) {
+            console.error("Módulo não encontrado.");
+            return;
+        }
+    
+        const finalModuleTitle = moduleTitle.trim() === "" ? module.title : moduleTitle;
+        console.log({ finalModuleTitle });
+    
+        try {
+            // Atualizar o módulo
+            const updatedModule = await updateModule(module.id, finalModuleTitle);
+            console.log("Módulo atualizado com sucesso:", updatedModule);
+    
+            // Verifique se há uma aula selecionada e atualize a aula também
+            if (selectedClass) {
+                const finalClassTitle = classTitle.trim() === "" ? selectedClass.title : classTitle;
+                const finalClassUrl = classUrl.trim() === "" ? selectedClass.url : classUrl;
+    
+                // Atualizar a aula
+                const updatedClass = await updateClass(selectedClass.id, finalClassTitle, finalClassUrl);
+                console.log("Aula atualizada com sucesso:", updatedClass);
+            }
+        } catch (error) {
+            console.error("Erro ao atualizar o módulo e/ou aula:", error);
+        }
+    };
+    
+    const handleDeleteModuleClass = async (clazzId) => {
+        try {
+            await deleteModuleClass(clazzId); 
+            setClasses((prevModules) => prevModules.filter((classes) => classes.id !== clazzId)); // Atualiza a lista
+            console.log("Módulo deletado com sucesso:", clazzId);
+        } catch (error) {
+            console.error("Erro ao deletar o módulo:", error);
+        }
+    };
+
+    const hadleNewModule = () => {
+        navitage('/UpdateModule')
+    };
 
     useEffect(() => {
         const fetchModulesClass = async () => {
             try {
-                const data = await getClassFromModules(moduleId);
+                const data = await getClassFromModules(module.id);
                 setClasses(data);
             } catch (error) {
                 console.error("Erro ao carregar módulos:", error);
@@ -23,7 +79,7 @@ export default function UpdateModuleClass() {
         };
 
         fetchModulesClass();
-    }, [moduleId]);
+    }, [module.id]);
 
     const handleModuleClick = (moduleClass) => {
         setSelectedClass(moduleClass); 
@@ -34,14 +90,14 @@ export default function UpdateModuleClass() {
         <>
             <div className='update-module-class-container'>
                 <div className="arrow-back">
-                    <MyArrowBack />
+                    <MyArrowBack onClick={hadleNewModule}/>
                 </div>
 
                 <h1>Atualizar Módulo</h1>
                 <div className="update-module-class-list">
                     <div className='input-name-module'>
                         <label className='labelInput'>Nome</label>
-                        <input type="text" className="my-input" placeholder="Digite o novo nome do Módulo"/>
+                        <input type="text" className="my-input" placeholder="Digite o novo nome do Módulo" value={moduleTitle} onChange={(e) => setModuleTitle(e.target.value)}/>
                     </div>
                     {classes.length > 0 ? (
                         classes.map((moduleClass) => (
@@ -52,7 +108,9 @@ export default function UpdateModuleClass() {
                                 >
                                     {moduleClass.title}
                                 </button>
-                                <MyButtonDelete onClick={() => {}}/>
+                                <MyButtonDelete onClick={() => {
+                                    handleDeleteModuleClass(moduleClass.id);
+                                        }} />
                             </div>
                         ))
                     ) : (
@@ -64,10 +122,10 @@ export default function UpdateModuleClass() {
                             <h3>{selectedClass.title}</h3>
                             <form className='form-update-module-class'>
                                 <div>
-                                    <MyInput className="my-input" textLabel="Título da aula" typeInput="text" placeholder="Digite o título da aula"/>
+                                    <MyInput className="my-input" textLabel="Título da aula" typeInput="text" placeholder="Digite o título da aula" value={classTitle} onChange={(e)=> setClassTitle(e.target.value)}/>
                                 </div>
                                 <div>
-                                    <MyInput className="my-input" textLabel="URL do Video" typeInput="text" placeholder="Digite a URL do vídeo"/>
+                                    <MyInput className="my-input" textLabel="URL do Video" typeInput="text" placeholder="Digite a URL do vídeo" value={classUrl} onChange={(e)=> setClassUrl(e.target.value)}/>
                                 </div>
                             </form>
                         </div>
@@ -75,7 +133,7 @@ export default function UpdateModuleClass() {
                 </div>
 
                 <div className='button-update-module-class'>
-                    <MyButton className="my-button" colorButton="black" text="Atualizar Módulo" />
+                    <MyButton className="my-button" colorButton="black" text="Atualizar Módulo" onClick={handleSubmit}/>
                 </div>
             </div>
 
