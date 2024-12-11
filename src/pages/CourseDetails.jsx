@@ -158,7 +158,6 @@ export default function CourseDetails() {
         )
     }
 
-
     return (
         <>
             <div className="div-course">
@@ -198,9 +197,6 @@ export default function CourseDetails() {
                 </div>
                 <div className="div-buttons-update-delete" style={{display: visualizer}}>
                     <MyButton className="my-button" colorButton="green" text="Atualizar Módulo" onClick={handleCourseActualization}/>
-                <div className="div-buttons-update-delete" >
-                    <MyButton className="my-button" colorButton="green" text="Atualizar Curso" onClick={() => handleCourseActualization()}/>
-
                     <MyButton className="my-button" colorButton="red" text="Deletar Curso"/>
                 </div>
 
