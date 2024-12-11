@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {getCourseByTeacher} from "../services/Teacher/CourseByTeacher"
 import "../components/css/Courses.css"
+import { useNavigate } from "react-router-dom";
 
 function useCourseByTeacher(userId) {
     const [courseByTeacher, setCourseByTeacher] = useState([]);
@@ -25,6 +26,7 @@ export default function CourseByTeacher() {
     const courseByTeacher = useCourseByTeacher(1);
     const [currentIndex, setCurrentIndex] = useState(0);
     const itemsPerPage = 5;
+    const navigate = useNavigate();
   
     const handleNext = () => {
       setCurrentIndex((prevIndex) => 
@@ -37,6 +39,10 @@ export default function CourseByTeacher() {
     };
   
     const visibleCourses = courseByTeacher.slice(currentIndex, currentIndex + itemsPerPage);
+
+    const handleCourseClick = (course) => {
+      navigate(`/course-details/${course.id}`, { state: { course } });
+    }; 
   
     return (
       <>
@@ -53,7 +59,7 @@ export default function CourseByTeacher() {
             <div className="carousel-content">
               {visibleCourses.map((course, index) => (
                 <div key={index} className="carousel-item">
-                  <button className="course-button" style={{ backgroundImage: `url(${course.image})` }}></button>
+                  <button className="course-button" style={{ backgroundImage: `url(${course.image})` }}  onClick={() => handleCourseClick(course)}></button>
                   <span className="course-title">{course.title}</span>
                 </div>
               ))}
