@@ -40,9 +40,9 @@ export default function Courses() {
 
   const visibleCourses = courses.slice(currentIndex, currentIndex + itemsPerPage);
 
-  const handleCourseClick = (courseId) => {
-    navigate(`/course-details/${courseId}`);
-  };
+  const handleCourseClick = (course) => {
+    navigate(`/course-details/${course.id}`, { state: { course } });
+  };  
 
   return (
     <>
@@ -59,7 +59,7 @@ export default function Courses() {
           <div className="carousel-content">
             {visibleCourses.map((course, index) => (
               <div key={index} className="carousel-item">
-                <button className="course-button" style={{ backgroundImage: `url(${course.image})` }} onClick={() => handleCourseClick(course.id)}></button>
+                <button className="course-button" style={{ backgroundImage: `url(${course.image})` }} onClick={() => handleCourseClick(course)}></button>
                 <span className="course-title">{course.title}</span>
               </div>
             ))}
