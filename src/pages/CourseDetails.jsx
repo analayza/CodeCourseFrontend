@@ -54,6 +54,7 @@ export default function CourseDetails() {
     const user = location.state?.user;
     const navitage = useNavigate();
     const type = user?.type;
+    const origin = location.state?.origin;
 
     const [visualizer, setVisualizer] = useState("none");
 
@@ -94,14 +95,34 @@ export default function CourseDetails() {
         console.log(course)
     }
 
-    return (
-        <>
+    const [selectedClassLink, setSelectedClassLink] = useState(null);
+
+    const formatYouTubeLink = (link) => {
+        if (link.includes("youtube.com/watch?v=")) {
+            const videoId = link.split("v=")[1].split("&")[0];
+            return `https://www.youtube.com/embed/${videoId}`;
+        }
+        return link;
+    };
+
+    const handleClassClick = (classUrl) => {
+        const formattedLink = formatYouTubeLink(classUrl);
+        setSelectedClassLink(formattedLink);
+    };
+
+    const closeModal = () => {
+        setSelectedClassLink(null);
+    };
+
+    if(origin === "CoursesSuggestions"){
+        return(
+            <>
             <div className="div-course">
                 <MyArrowBack onClick={hadleBackClick}/>
                 <h1>Detalhes do Curso</h1>
                 <div className="course-details">
                     <h2>{course.title}</h2>
-                    <img src={course.image} alt={`Imagem do curso ${course.title}`} />
+                    <img src={course.image} alt={"Imagem do curso ${course.title}"}/>
                     <p>{course.description}</p>
                 </div>
                 <div className="listModule">
@@ -119,7 +140,51 @@ export default function CourseDetails() {
                                     {classes.length > 0 ? (
                                         classes.map((clazz) => (
                                             <div key={clazz.id} className="classItem">
-                                                <h5>{clazz.title}</h5>
+                                                <button className="buttonClass" onClick={() => handleClassClick(clazz.url)}
+                                                >{clazz.title}</button>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p>Não há aulas para este módulo.</p>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
+            </>
+        )
+    }
+
+
+    return (
+        <>
+            <div className="div-course">
+                <MyArrowBack onClick={hadleBackClick}/>
+                <h1>Detalhes do Curso</h1>
+                <div className="course-details">
+                    <h2>{course.title}</h2>
+                    <img src={course.image} alt={"Imagem do curso ${course.title}"}/>
+                    <p>{course.description}</p>
+                </div>
+                <div className="listModule">
+                    {modules.map((module) => (
+                        <div key={module.id}>
+                            <button
+                                className="buttonModule"
+                                onClick={() => handleModuleClick(module.id)}
+                            >
+                                <span>{module.title}</span>
+                            </button>
+
+                            {activeModuleId === module.id && (
+                                <div className="listClasses">
+                                    {classes.length > 0 ? (
+                                        classes.map((clazz) => (
+                                            <div key={clazz.id} className="classItem">
+                                                <button className="buttonClass" onClick={() => handleClassClick(clazz.url)}
+                                                >{clazz.title}</button>
                                             </div>
                                         ))
                                     ) : (
@@ -147,7 +212,24 @@ export default function CourseDetails() {
                         <p>Não há alunos cadastrados neste curso.</p>
                     )}
                 </div>
-                
+                {selectedClassLink && (
+                    <div className="modal-overlay" onClick={() => closeModal}>
+                        <div
+                            className="modal-content"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <iframe className="iframe"
+                                src={selectedClassLink}
+                                title="Video Aula"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                            <button className="close-modal" onClick={closeModal}>
+                                Fechar
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
             <footer className="footer-details">
                 <MyCodeCourses />
