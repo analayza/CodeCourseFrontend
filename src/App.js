@@ -14,7 +14,6 @@ import Register from './pages/RegisterPage.jsx';
 import NewModule from './pages/Teacher/NewModule.jsx';
 import Home from './pages/home.jsx';
 
-
 function App() {
   return (
     <Router>
