@@ -49,7 +49,7 @@ export default function RegisterPage() {
           <span>Code Cursos</span>
         </h1>
 
-        <div className="border-form">
+        <div className="register-border-form">
           <form onSubmit={handleSubmit}>
             <MyInput
               placeholder="Nome"

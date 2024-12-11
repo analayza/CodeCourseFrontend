@@ -13,11 +13,11 @@
   position: relative;
 }
 
-.border-form {
-  width: 45%;
+.register-border-form {
   border: 0.1px solid rgb(165, 165, 165); 
   border-radius: 5px; 
   padding: 20px;
+  max-width: 600px;
 }
 
 .button {
@@ -37,7 +37,8 @@
 
 .register-image {
   width: 50%;
-  height: 100%;
+  height: 122%;
+  max-height: 1000px;
   display: flex;
   justify-content: center;
   align-items: center;
