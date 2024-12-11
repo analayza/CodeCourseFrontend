@@ -7,21 +7,75 @@ import MyInput from "../../components/Input";
 import MyCodeCourses from "../../components/CodeCourses";
 import { updatePasswordStudent, updatePasswordTeacher } from "../../services/UpdatePassword"; 
 import "../../pages/css/ProfileConfiguration.css";
-import profileConfiguration from '../../images/profile.png';
 import MyButton from "../../components/Button";
+import {useLocation} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { deleteStudent, deleteTeacher } from "../../services/DeleteAccount";
 
 export default function ProfileConfiguration() {
+
+    const navigate = useNavigate();
+
+    const location = useLocation();
+    const user = location.state?.user;
+
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [message, setMessage] = useState("");
 
-    const handlePasswordUpdate = async () => {
+    const hadleBackClick = () => {
+        navigate('/')
+    }
+
+    const handleDeleteClick = async (userId) => {
         try {
-            const response = await updatePasswordTeacher(oldPassword, newPassword);
-            setMessage("Senha atualizada com sucesso!");
+            if (user.type === "Aluno") {
+                // Chama o método para atualizar a senha do aluno
+                const response = await deleteStudent(user.id);
+                console.log("Resposta da API (Aluno):", response);
+                navigate('/Login')
+            } else if (user.type === "Professor") {
+                // Chama o método para atualizar a senha do professor
+                const response = await deleteTeacher(user.id);
+                console.log("Resposta da API (Professor):", response);
+                navigate('/Login')
+            }
+        } catch (error) {
+            console.error("Erro deletar conta", error);
+        }
+    }
+
+    const handlePasswordUpdate = async () => {
+        console.log("Tentando atualizar a senha...");
+        if (!oldPassword || !newPassword) {
+            setMessage("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        // Verifica se a senha antiga corresponde à senha salva
+        if (oldPassword !== user.password) {
+            setMessage("A senha antiga não corresponde.");
+            return;
+        }
+
+        try {
+            if (user.type === "Aluno") {
+                // Chama o método para atualizar a senha do aluno
+                const response = await updatePasswordStudent(user.id, oldPassword, newPassword);
+                console.log("Resposta da API (Aluno):", response);
+                setMessage("Senha atualizada com sucesso!");
+            } else if (user.type === "Professor") {
+                // Chama o método para atualizar a senha do professor
+                const response = await updatePasswordTeacher(user.id, oldPassword, newPassword);
+                console.log("Resposta da API (Professor):", response);
+                setMessage("Senha atualizada com sucesso!");
+            }
+
+            // Limpa os campos após atualização
             setOldPassword("");
             setNewPassword("");
         } catch (error) {
+            console.error("Erro ao atualizar a senha:", error);
             setMessage("Erro ao atualizar a senha. Verifique os dados e tente novamente.");
         }
     };
@@ -30,15 +84,15 @@ export default function ProfileConfiguration() {
         <>
             <div className="profile-configuration-container">
                 <div className="profile-header">
-                    <img src={profileConfiguration} alt="Foto do perfil" className="profile-picture" />
+                    <img src={user.profile} alt="Foto do perfil" className="profile-picture" />
                     <div className="profile-info">
-                        <h1 className="profile-name">Pedrina</h1>
-                        <p className="profile-role">Aluno(a)</p>
+                        <h1 className="profile-name">{user.name}</h1>
+                        <p className="profile-role">{user.type}(a)</p>
                     </div>
                 </div>
 
                 <div className="arrow-back">
-                    <MyArrowBack />
+                    <MyArrowBack onClick={hadleBackClick}/>
                 </div>
 
                 <div className="formePassword">
@@ -61,8 +115,9 @@ export default function ProfileConfiguration() {
                     <MyButton className="my-button"
                         colorButton="black"
                         text="Redefinir Senha"
-                        onClick={handlePasswordUpdate}/>
-                    <MyButton className="my-button" colorButton="red" text="Excluir Conta"/>
+                        onClick={handlePasswordUpdate}
+                        />
+                    <MyButton className="my-button" colorButton="red" text="Excluir Conta" onClick={() => handleDeleteClick(user.id)}/>
                 </div>
 
                 {message && <p className="message">{message}</p>}
