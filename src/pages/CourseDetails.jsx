@@ -51,7 +51,6 @@ function ListStudentCourseByTeacher(courseId) {
 export default function CourseDetails() {
     const location = useLocation();
     const course = location.state?.course;
-    console.log(course)
     const user = location.state?.user;
     const navitage = useNavigate();
     const type = user?.type;
@@ -93,7 +92,6 @@ export default function CourseDetails() {
 
     const handleCourseActualization = () => {
         navitage('/UpdateCourse', { state: { course } })
-        console.log(course)
     }
 
     const [selectedClassLink, setSelectedClassLink] = useState(null);

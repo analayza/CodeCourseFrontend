@@ -63,7 +63,7 @@ export default function NewModule() {
     };
 
     const hadleNewModule = () => {
-        navitage('/UpdateCourse')
+        navitage('/UpdateCourse', { state: { course } })
     };
 
     return (

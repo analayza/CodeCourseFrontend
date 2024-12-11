@@ -18,7 +18,7 @@ export default function UpdateModule() {
     const courseId = course.id;
 
     const hadleListModules = () => {
-        navitage('/UpdateCourse')
+        navitage('/UpdateCourse', { state: { course } })
     };
 
     const hadleupdateModuleClass = (module) => {

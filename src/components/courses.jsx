@@ -43,7 +43,9 @@ export default function Courses() {
 
   const handleCourseClick = (course) => {
     const user = JSON.parse(sessionStorage.getItem("user"));
+    sessionStorage.setItem("course", JSON.stringify(course));
     navigate(`/course-details`, { state: { course, user } });
+    console.log("Curso setado:", JSON.parse(sessionStorage.getItem("course")));
   };  
 
   return (
