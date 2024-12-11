@@ -1,18 +1,21 @@
 import React from "react";
 import './css/NavBar.css';
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function NavBar({ userName, userRole }){
 
     const navigate = useNavigate();
 
+    const user = JSON.parse(sessionStorage.getItem("user"));
+
     const handleProfileClick = () => {
-        const user = JSON.parse(sessionStorage.getItem("user"));
         console.log(user)
         if (user) {
             navigate('/Profile', { state: { user } });
         }
     };
+    
 
     return(
         <nav className="navbar">
@@ -28,7 +31,7 @@ export default function NavBar({ userName, userRole }){
 
                 <div className="user-profile">
                     <img
-                        src="https://via.placeholder.com/40"
+                        src={user.profile}
                         alt="Avatar do usuário"
                         className="user-avatar"
                     />

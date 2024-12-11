@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {getCourseSuggestions} from "../services/Student/coursesuggestions"
 import "../components/css/Courses.css"
+import { useNavigate } from "react-router-dom";
 
 function useCourseSuggestions(userId) {
     const [courseSuggestions, setSuggestions] = useState([]);
@@ -25,6 +26,7 @@ export default function CourseSuggestions() {
     const coursesSuggestions = useCourseSuggestions(1);
     const [currentIndex, setCurrentIndex] = useState(0);
     const itemsPerPage = 5;
+    const navigate = useNavigate();
   
     const handleNext = () => {
       setCurrentIndex((prevIndex) => 
@@ -37,6 +39,11 @@ export default function CourseSuggestions() {
     };
   
     const visibleCourses = coursesSuggestions.slice(currentIndex, currentIndex + itemsPerPage);
+
+    const handleCourseClick = (course) => {
+      const user = JSON.parse(sessionStorage.getItem("user"));
+      navigate(`/course-details/${course.id}`, { state: { course, user } });
+    }; 
   
     return (
       <>
@@ -53,7 +60,7 @@ export default function CourseSuggestions() {
             <div className="carousel-content">
               {visibleCourses.map((course, index) => (
                 <div key={index} className="carousel-item">
-                  <button className="course-button" style={{ backgroundImage: `url(${course.image})` }}></button>
+                  <button className="course-button" style={{ backgroundImage: `url(${course.image})` }} onClick={() => handleCourseClick(course)}></button>
                   <span className="course-title">{course.title}</span>
                 </div>
               ))}

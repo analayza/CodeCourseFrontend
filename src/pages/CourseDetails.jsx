@@ -55,11 +55,15 @@ export default function CourseDetails() {
     const navitage = useNavigate();
     const type = user?.type;
 
-    if(type === "Professor"){
-        console.log("professor")
-    }else if(type === "Aluno"){
-        console.log("Aluno")
-    }
+    const [visualizer, setVisualizer] = useState("none");
+
+    useEffect(() => {
+        if (type === "Professor") {
+            setVisualizer("flex");
+        } else if (type === "Aluno") {
+            setVisualizer("none");
+        }
+    }, [type]);
 
     const modules = useSearchModule(course.id);
     const students = ListStudentCourseByTeacher(course.id);
@@ -126,12 +130,12 @@ export default function CourseDetails() {
                         </div>
                     ))}
                 </div>
-                <div className="div-buttons-update-delete" >
+                <div className="div-buttons-update-delete" style={{display: visualizer}}>
                     <MyButton className="my-button" colorButton="green" text="Atualizar Módulo" onClick={handleCourseActualization}/>
                     <MyButton className="my-button" colorButton="red" text="Deletar Curso"/>
                 </div>
 
-                <div className="div-students-course">
+                <div className="div-students-course" style={{display: visualizer}}>
                     <h5>Alunos do Curso</h5>
                     {students.length > 0 ? (
                         <ul>
