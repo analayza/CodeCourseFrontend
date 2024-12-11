@@ -13,6 +13,7 @@ export default function UpdateCourse() {
     const course = location.state?.course;  // Verificando se course está vindo corretamente
     console.log(course);
     const navitage = useNavigate();
+    const user = JSON.parse(sessionStorage.getItem("user"));
     
 
     // Garantir que course não seja nulo ou indefinido, caso contrário, use valores padrão
@@ -30,6 +31,10 @@ export default function UpdateCourse() {
         navitage('/UpdateModule', { state: { course }})
         console.log(course)
     };
+
+    const hadleBackDetails= () => {
+        navitage('/course-details', { state: { course, user }})
+    }
 
 
     const handleSubmit = async (e) => {
@@ -69,7 +74,7 @@ export default function UpdateCourse() {
     return (
         <div className="update-courses-container">
             <div className="arrow-back">
-                <MyArrowBack />
+                <MyArrowBack onClick={hadleBackDetails}/>
             </div>
             <h3 className="title">Atualizar Curso</h3>
             
