@@ -23,7 +23,8 @@ function useCourseSuggestions(userId) {
 }
 
 export default function CourseSuggestions() {
-    const coursesSuggestions = useCourseSuggestions(1);
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const coursesSuggestions = useCourseSuggestions(user.id);
     const [currentIndex, setCurrentIndex] = useState(0);
     const itemsPerPage = 5;
     const navigate = useNavigate();
@@ -42,7 +43,7 @@ export default function CourseSuggestions() {
 
     const handleCourseClick = (course) => {
       const user = JSON.parse(sessionStorage.getItem("user"));
-      navigate(`/course-details/${course.id}`, { state: { course, user } });
+      navigate(`/course-details`, { state: { course, user, origin:"CoursesSuggestions" } });
     }; 
   
     return (

@@ -21,7 +21,7 @@ function App() {
         <Route path='/' element={<Home/>}></Route>
         <Route path='/Profile' element={<ProfileConfiguration/>}></Route>
         <Route path='/UpdateCourse' element={<UpdateCourse/>}></Route>
-        <Route path="/course-details/:id" element={<CourseDetails/>}></Route>
+        <Route path="/course-details" element={<CourseDetails/>}></Route>
         <Route path='/UpdateModule' element={<UpdateModule/>}></Route>
         <Route path='/UpdateModuleClass' element={<UpdateModuleClass/>}></Route>
         <Route path='/CourseCreation' element={<CourseCreation/>}></Route>

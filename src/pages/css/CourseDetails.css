@@ -49,20 +49,13 @@
     margin-bottom: 0.1px;
 }
 
-.classItem{
-    width: 296px;
-    height: 30px;
-    padding: 1px;
-    background-color: #fff; /* cor do fundo */
-    color: black; /* cor do texto */
-    font-size: 16px;
-    font-family: 'Inter', sans-serif;
-    border: none;
-    cursor: pointer;
-    border: 1px solid rgb(165, 165, 165);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+
+.buttonClass{
     margin-left: 15px;
+    width: 300px;
+    height: 35px;
+    cursor: pointer;
+    border: 5px;
 }
 
 .classItem h5{
@@ -102,3 +95,44 @@
     white-space: nowrap;
     margin-top: 6px;
 }
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: transparent;
+    border-radius: 8px;
+    max-width: 900px;
+    width: 90%;
+    margin-left: 40px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.iframe{
+    width: 900px;
+    height: 500px;
+    border-radius: 8px;
+    border: none;
+}
+
