@@ -6,7 +6,8 @@ import { getModulesFromCourse } from "../services/Student/ListModuleCourse"
 import { useEffect, useState } from "react";
 import { getClassFromModule } from "../services/Student/ListModuleClass";
 import MyButton from "../components/Button";
-import {getStudentCourseByTeacher} from "../services/Teacher/ListStudentCourseByTeacher"
+import {getStudentCourseByTeacher} from "../services/Teacher/ListStudentCourseByTeacher";
+import { useNavigate } from "react-router-dom";
 
 function useSearchModule(courseId) {
     const [modules, setModules] = useState([]);
@@ -34,7 +35,7 @@ function ListStudentCourseByTeacher(courseId) {
         const fetchStudents = async () => {
             try {
                 const data = await getStudentCourseByTeacher(courseId);
-                setStudents(data); // Armazena os alunos no estado
+                setStudents(data);
                 console.log(students)
             } catch (error) {
                 console.error("Erro ao buscar alunos:", error);
@@ -50,32 +51,49 @@ function ListStudentCourseByTeacher(courseId) {
 export default function CourseDetails() {
     const location = useLocation();
     const course = location.state?.course;
+    const user = location.state?.user;
+    const navitage = useNavigate();
+    const type = user?.type;
+
+    if(type === "Professor"){
+        console.log("professor")
+    }else if(type === "Aluno"){
+        console.log("Aluno")
+    }
 
     const modules = useSearchModule(course.id);
     const students = ListStudentCourseByTeacher(course.id);
-    const [classes, setClasses] = useState([]); // Estado para armazenar as aulas
-    const [activeModuleId, setActiveModuleId] = useState(null); // Para controlar qual módulo está expandido
+    const [classes, setClasses] = useState([]);
+    const [activeModuleId, setActiveModuleId] = useState(null);
+
+    const hadleBackClick = () => {
+        navitage('/')
+    };
 
     const handleModuleClick = async (moduleId) => {
         if (activeModuleId === moduleId) {
-            // Se o módulo clicado já estiver ativo, desativa ele
             setActiveModuleId(null);
             setClasses([]);
         } else {
             try {
                 const data = await getClassFromModule(moduleId);
-                setClasses(data); // Atualiza o estado com as aulas do módulo
-                setActiveModuleId(moduleId); // Marca o módulo como ativo
+                setClasses(data);
+                setActiveModuleId(moduleId);
             } catch (error) {
                 console.error("Erro ao carregar aulas:", error);
             }
         }
     };
 
+    const handleCourseActualization = () => {
+        navitage('/UpdateCourse', { state: { course } })
+        console.log(course)
+    }
+
     return (
         <>
             <div className="div-course">
-                <MyArrowBack />
+                <MyArrowBack onClick={hadleBackClick}/>
                 <h1>Detalhes do Curso</h1>
                 <div className="course-details">
                     <h2>{course.title}</h2>
@@ -87,12 +105,11 @@ export default function CourseDetails() {
                         <div key={module.id}>
                             <button
                                 className="buttonModule"
-                                onClick={() => handleModuleClick(module.id)} // Chama a função ao clicar no botão do módulo
+                                onClick={() => handleModuleClick(module.id)}
                             >
                                 <span>{module.title}</span>
                             </button>
 
-                            {/* Exibe as aulas apenas para o módulo ativo */}
                             {activeModuleId === module.id && (
                                 <div className="listClasses">
                                     {classes.length > 0 ? (
@@ -109,8 +126,8 @@ export default function CourseDetails() {
                         </div>
                     ))}
                 </div>
-                <div className="div-buttons-update-delete">
-                    <MyButton className="my-button" colorButton="green" text="Atualizar Módulo"/>
+                <div className="div-buttons-update-delete" >
+                    <MyButton className="my-button" colorButton="green" text="Atualizar Módulo" onClick={handleCourseActualization}/>
                     <MyButton className="my-button" colorButton="red" text="Deletar Curso"/>
                 </div>
 
