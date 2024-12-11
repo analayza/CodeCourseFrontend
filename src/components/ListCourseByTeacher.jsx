@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {getCourseByTeacher} from "../services/Teacher/CourseByTeacher"
 import "../components/css/Courses.css"
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function useCourseByTeacher(userId) {
     const [courseByTeacher, setCourseByTeacher] = useState([]);
@@ -23,7 +23,8 @@ function useCourseByTeacher(userId) {
 }
 
 export default function CourseByTeacher() {
-    const courseByTeacher = useCourseByTeacher(1);
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const courseByTeacher = useCourseByTeacher(user.id);
     const [currentIndex, setCurrentIndex] = useState(0);
     const itemsPerPage = 5;
     const navigate = useNavigate();
@@ -41,7 +42,8 @@ export default function CourseByTeacher() {
     const visibleCourses = courseByTeacher.slice(currentIndex, currentIndex + itemsPerPage);
 
     const handleCourseClick = (course) => {
-      navigate(`/course-details/${course.id}`, { state: { course } });
+      const user = JSON.parse(sessionStorage.getItem("user"));
+      navigate(`/course-details/`, { state: { course, user } });
     }; 
   
     return (

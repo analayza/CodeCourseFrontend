@@ -23,7 +23,8 @@ function useSearchCourses(userId) {
 }
 
 export default function Courses() {
-  const courses = useSearchCourses(1);
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  const courses = useSearchCourses(user.id);
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerPage = 5;
   const navigate = useNavigate();
@@ -41,7 +42,8 @@ export default function Courses() {
   const visibleCourses = courses.slice(currentIndex, currentIndex + itemsPerPage);
 
   const handleCourseClick = (course) => {
-    navigate(`/course-details/${course.id}`, { state: { course } });
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    navigate(`/course-details`, { state: { course, user } });
   };  
 
   return (

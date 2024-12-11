@@ -49,7 +49,7 @@ export default function LoginPage() {
         <div className="login-form-area">
           <h3>Comece sua jornada conosco!</h3>
           <h1>Entre na Code Cursos</h1>
-          <div className="border-form">
+          <div className="login-border-form">
             <form onSubmit={handleLogin}>
               <MyInput
                 placeholder="Email"
