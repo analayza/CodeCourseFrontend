@@ -4,12 +4,37 @@ import '../css/UpdateModule.css';
 import MyCodeCourses from "../../components/CodeCourses";
 import MyArrowBack from "../../components/ArrowBack"; 
 import MyButtonDelete from '../../components/ButtonDelete';
-
+import { useNavigate } from "react-router-dom";
+import { deleteModule } from '../../services/Teacher/DeleteModule';
+import { useLocation } from "react-router-dom";
 
 
 export default function UpdateModule() {
     const [modules, setModules] = useState([]);
-    const courseId = 1; 
+    const navitage = useNavigate();
+    const location = useLocation();
+    const course = location.state?.course;
+    console.log(course)
+    const courseId = course.id;
+
+    const hadleListModules = () => {
+        navitage('/UpdateCourse')
+    };
+
+    const hadleupdateModuleClass = (module) => {
+        navitage('/UpdateModuleClass', { state: { module }})
+    };
+
+    const handleDeleteModule = async (moduleId) => {
+        try {
+            await deleteModule(moduleId); 
+            setModules((prevModules) => prevModules.filter((module) => module.id !== moduleId)); // Atualiza a lista
+            console.log("Módulo deletado com sucesso:", moduleId);
+        } catch (error) {
+            console.error("Erro ao deletar o módulo:", error);
+        }
+    };
+
 
     useEffect(() => {
         const fetchModules = async () => {
@@ -24,6 +49,8 @@ export default function UpdateModule() {
         fetchModules();
     }, [courseId]);
 
+
+
     const handleModuleClick = (module) => {
         console.log("Módulo clicado:", module);
         // Adicione a lógica desejada ao clicar em um módulo
@@ -33,7 +60,7 @@ export default function UpdateModule() {
         <>
             <div className='update-module-container'>
                 <div className="arrow-back">
-                        <MyArrowBack />
+                        <MyArrowBack onClick={hadleListModules}/>
                 </div>
 
                 <h1>Atualizar Módulo</h1>
@@ -43,13 +70,13 @@ export default function UpdateModule() {
                         <div className='container-buttons-update-module'>
                             <button className='button-module'
                                 key={module.id}
-                                onClick={() => alert(`Você clicou no módulo: ${module.title}`)}
+                                onClick={() => {hadleupdateModuleClass(module)}}
                                 >
-                                {module.title} 
+                                {module.title}
                                 
                             </button>
                             
-                                <MyButtonDelete onClick={() => {}}/>
+                                <MyButtonDelete onClick={() => handleDeleteModule(module.id)}/>
                             
                         </div>
                         
