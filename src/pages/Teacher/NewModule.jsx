@@ -51,11 +51,13 @@ export default function NewModule() {
             // Salvar o novo módulo
             const newModule = await createModule(moduleTitle, courseId); // Passando o ID do curso para o módulo
             console.log("Novo módulo salvo com sucesso:", newModule);
+            alert('Módulo atualizado com sucesso!');
 
             // Verifique se há uma aula selecionada e salve a aula também
             if (classTitle.trim() && classUrl.trim()) {
                 const newClass = await createClass(classTitle, classUrl, newModule.id);
                 console.log("Nova aula salva com sucesso:", newClass);
+                alert('Aula atualizada com sucesso!');
             }
         } catch (error) {
             console.error("Erro ao salvar o módulo e/ou aula:", error);

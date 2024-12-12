@@ -19,6 +19,7 @@ export default function UpdateModuleClass() {
     const [classUrl, setClassUrl] = useState('');
     const location = useLocation();
     const module = location.state?.module;
+    const course = location.state?.course;
     console.log(module)
     const navitage = useNavigate();
     const [moduleTitle, setModuleTitle] = useState('');
@@ -48,6 +49,7 @@ export default function UpdateModuleClass() {
                 // Atualizar a aula
                 const updatedClass = await updateClass(selectedClass.id, finalClassTitle, finalClassUrl);
                 console.log("Aula atualizada com sucesso:", updatedClass);
+                alert('Módulo e/ou Aula com sucesso!');
             }
         } catch (error) {
             console.error("Erro ao atualizar o módulo e/ou aula:", error);
@@ -59,13 +61,14 @@ export default function UpdateModuleClass() {
             await deleteModuleClass(clazzId); 
             setClasses((prevModules) => prevModules.filter((classes) => classes.id !== clazzId)); // Atualiza a lista
             console.log("Módulo deletado com sucesso:", clazzId);
+            alert('Aula deletada com sucesso!');
         } catch (error) {
             console.error("Erro ao deletar o módulo:", error);
         }
     };
 
     const hadleNewModule = () => {
-        navitage('/UpdateModule')
+        navitage('/UpdateModule', { state: {module, course}})
     };
 
     useEffect(() => {
@@ -82,7 +85,13 @@ export default function UpdateModuleClass() {
     }, [module.id]);
 
     const handleModuleClick = (moduleClass) => {
-        setSelectedClass(moduleClass); 
+        if (selectedClass?.id === moduleClass.id) {
+            // Se o módulo clicado já estiver selecionado, desmarque-o
+            setSelectedClass(null);
+        } else {
+            // Caso contrário, selecione o módulo
+            setSelectedClass(moduleClass);
+        }
         console.log("Aula clicada:", moduleClass);
     };
 

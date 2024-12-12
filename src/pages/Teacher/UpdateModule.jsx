@@ -22,7 +22,8 @@ export default function UpdateModule() {
     };
 
     const hadleupdateModuleClass = (module) => {
-        navitage('/UpdateModuleClass', { state: { module }})
+        navitage('/UpdateModuleClass', { state: { module, course }})
+        console.log(course)
     };
 
     const handleDeleteModule = async (moduleId) => {
@@ -30,6 +31,7 @@ export default function UpdateModule() {
             await deleteModule(moduleId); 
             setModules((prevModules) => prevModules.filter((module) => module.id !== moduleId)); // Atualiza a lista
             console.log("Módulo deletado com sucesso:", moduleId);
+            alert('Módulo deletado com sucesso!');
         } catch (error) {
             console.error("Erro ao deletar o módulo:", error);
         }
