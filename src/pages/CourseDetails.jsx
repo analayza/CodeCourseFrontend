@@ -8,10 +8,11 @@ import { getClassFromModule } from "../services/Student/ListModuleClass";
 import MyButton from "../components/Button";
 import {getStudentCourseByTeacher} from "../services/Teacher/ListStudentCourseByTeacher";
 import { useNavigate } from "react-router-dom";
+import {deleteCourse} from "../../src/services/Teacher/DeleteCourse";
+import {AcquirngCourse} from "../../src/services/Student/AcquirngCourse";
 
 function useSearchModule(courseId) {
     const [modules, setModules] = useState([]);
-
     useEffect(() => {
         const fetchModule = async () => {
             try {
@@ -56,8 +57,57 @@ export default function CourseDetails() {
     const navitage = useNavigate();
     const type = user?.type;
     const origin = location.state?.origin;
+    const [courses, setCourses] = useState([]);
+    const [isCourseAcquired, setIsCourseAcquired] = useState(false);
 
     const [visualizer, setVisualizer] = useState("none");
+
+
+    const handleAcquiringCourse = async () => {
+        try {
+            // Pegando os valores de userId e courseId da sessão ou de outras fontes
+            const userId = user?.id || sessionStorage.getItem("userId"); // Tentando pegar do contexto ou sessão
+            const courseId = course?.id || sessionStorage.getItem("courseId"); // Tentando pegar do contexto ou sessão
+            const userName = user?.name || sessionStorage.getItem("userName");
+
+            // Verificando se os valores foram obtidos
+            if (!userId || !courseId) {
+                console.error("Erro: userId ou courseId não encontrados!");
+                return; // Saindo da função se algum valor estiver ausente
+            }
+    
+            // Chama a API para adquirir o curso
+            await AcquirngCourse(courseId, userId,userName);
+    
+            // Atualiza o estado para indicar que o curso foi adquirido
+            setIsCourseAcquired(true);
+            console.log("Curso adquirido com sucesso!");
+    
+            // Redireciona o usuário para a página principal ou para outra página de cursos
+            navitage('/'); // Supondo que você tenha uma página de "Meus Cursos"
+        } catch (error) {
+            console.error("Erro ao adquirir o curso:", error);
+        }
+    };
+    
+
+    const handleDeleteCourse = async (courseId) => {
+        try {
+            await deleteCourse(courseId); // Chama a API para excluir o curso
+            console.log("Curso deletado com sucesso:", courseId);
+
+            navitage('/');
+            // Atualiza a lista de cursos visíveis
+            setCourses((prevCourses) =>
+                prevCourses.filter((course) => course.id !== courseId)
+            );
+    
+            // Opcional: redirecionar ou exibir uma mensagem de sucesso
+        } catch (error) {
+            console.error("Erro ao deletar o curso:", error);
+        }
+    };
+    
 
     useEffect(() => {
         if (type === "Professor") {
@@ -153,6 +203,9 @@ export default function CourseDetails() {
                         </div>
                     ))}
                 </div>
+                <div className="button-acquire-course">
+                    <MyButton className="my-button" colorButton="green" text="Adquirir Curso" onClick={handleAcquiringCourse}/>
+                </div>
             </div>
             </>
         )
@@ -197,7 +250,7 @@ export default function CourseDetails() {
                 </div>
                 <div className="div-buttons-update-delete" style={{display: visualizer}}>
                     <MyButton className="my-button" colorButton="green" text="Atualizar Módulo" onClick={handleCourseActualization}/>
-                    <MyButton className="my-button" colorButton="red" text="Deletar Curso"/>
+                    <MyButton className="my-button" colorButton="red" text="Deletar Curso" onClick={() => handleDeleteCourse(course.id)}/>
                 </div>
 
                 <div className="div-students-course" style={{display: visualizer}}>
