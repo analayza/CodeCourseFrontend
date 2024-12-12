@@ -64,26 +64,26 @@ export default function CourseDetails() {
 
     const handleAcquiringCourse = async () => {
         try {
-            // Pegando os valores de userId e courseId da sessão ou de outras fontes
-            const userId = user?.id || sessionStorage.getItem("userId"); // Tentando pegar do contexto ou sessão
-            const courseId = course?.id || sessionStorage.getItem("courseId"); // Tentando pegar do contexto ou sessão
+           
+            const userId = user?.id || sessionStorage.getItem("userId"); 
+            const courseId = course?.id || sessionStorage.getItem("courseId"); 
             const userName = user?.name || sessionStorage.getItem("userName");
 
-            // Verificando se os valores foram obtidos
+            
             if (!userId || !courseId) {
                 console.error("Erro: userId ou courseId não encontrados!");
-                return; // Saindo da função se algum valor estiver ausente
+                return; 
             }
     
-            // Chama a API para adquirir o curso
+            
             await AcquirngCourse(courseId, userId,userName);
     
-            // Atualiza o estado para indicar que o curso foi adquirido
+            
             setIsCourseAcquired(true);
             console.log("Curso adquirido com sucesso!");
     
-            // Redireciona o usuário para a página principal ou para outra página de cursos
-            navitage('/'); // Supondo que você tenha uma página de "Meus Cursos"
+            
+            navitage('/'); 
         } catch (error) {
             console.error("Erro ao adquirir o curso:", error);
         }
@@ -92,16 +92,16 @@ export default function CourseDetails() {
 
     const handleDeleteCourse = async (courseId) => {
         try {
-            await deleteCourse(courseId); // Chama a API para excluir o curso
+            await deleteCourse(courseId); 
             console.log("Curso deletado com sucesso:", courseId);
 
             navitage('/');
-            // Atualiza a lista de cursos visíveis
+          
             setCourses((prevCourses) =>
                 prevCourses.filter((course) => course.id !== courseId)
             );
     
-            // Opcional: redirecionar ou exibir uma mensagem de sucesso
+        
         } catch (error) {
             console.error("Erro ao deletar o curso:", error);
         }

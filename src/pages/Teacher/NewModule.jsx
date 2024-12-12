@@ -18,7 +18,7 @@ export default function NewModule() {
     const navitage = useNavigate();
     const location = useLocation();
 
-    // Garantir que o curso seja passado corretamente via useLocation
+
     const course = location.state?.course;
     const courseId = course?.id;
     console.log(course);
@@ -28,7 +28,7 @@ export default function NewModule() {
         }
     }, [courseId]);
 
-    // Função para adicionar um novo módulo
+  
     const addModule = () => {
         setModules([...modules, { title: "", videoUrl: "" }]);
     };
@@ -36,7 +36,6 @@ export default function NewModule() {
     const handleSave = async (e) => {
         e.preventDefault();
 
-        // Verifique se moduleTitle é válido
         if (!moduleTitle.trim()) {
             console.error("Título do módulo não informado.");
             return;
@@ -48,12 +47,11 @@ export default function NewModule() {
         }
 
         try {
-            // Salvar o novo módulo
-            const newModule = await createModule(moduleTitle, courseId); // Passando o ID do curso para o módulo
+            const newModule = await createModule(moduleTitle, courseId); 
             console.log("Novo módulo salvo com sucesso:", newModule);
             alert('Módulo atualizado com sucesso!');
 
-            // Verifique se há uma aula selecionada e salve a aula também
+            
             if (classTitle.trim() && classUrl.trim()) {
                 const newClass = await createClass(classTitle, classUrl, newModule.id);
                 console.log("Nova aula salva com sucesso:", newClass);

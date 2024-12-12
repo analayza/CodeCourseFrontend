@@ -10,13 +10,13 @@ import { useNavigate } from "react-router-dom";
 
 export default function UpdateCourse() {
     const location = useLocation();
-    const course = location.state?.course;  // Verificando se course está vindo corretamente
+    const course = location.state?.course;  
     console.log(course);
     const navitage = useNavigate();
     const user = JSON.parse(sessionStorage.getItem("user"));
     
 
-    // Garantir que course não seja nulo ou indefinido, caso contrário, use valores padrão
+    
     const [courseTitle, setCourseName] = useState(course?.title || ""); 
     const [imageURL, setImageURL] = useState(course?.image || ""); 
     const [courseValue, setCourseValue] = useState(course?.value || ""); 
@@ -40,13 +40,13 @@ export default function UpdateCourse() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Verifique se course é válido e atribua os valores de forma adequada
+        
         if (!course) {
             console.error("Curso não encontrado.");
             return;
         }
 
-        // Substitui os campos vazios pelos valores originais se necessário
+        
         const finalCourseTitle = courseTitle.trim() === "" ? course.title : courseTitle;
         const finalImageURL = imageURL.trim() === "" ? course.image : imageURL;
         const finalCourseValue = 
@@ -55,7 +55,7 @@ export default function UpdateCourse() {
             : courseValue;
         const finalDescription = description.trim() === "" ? course.description : description;
 
-        // Adiciona um log para depuração dos dados finais
+        
         console.log({
             finalCourseTitle,
             finalImageURL,

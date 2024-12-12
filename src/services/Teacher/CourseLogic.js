@@ -8,12 +8,12 @@ export const createCourse = async (formData) => {
   const endpoint = "http://localhost:8083/course-app/course/save";
 
   const payload = {
-    id: 0, // Caso necessário
+    id: 0, 
     title,
     image,
     value,
     description,
-    idTeacher, // Incluindo o ID do professor
+    idTeacher, 
   };
 
   try {

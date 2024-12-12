@@ -1,5 +1,5 @@
-import { VscTrash } from 'react-icons/vsc';  // Importando o ícone
-import './css/ButtonDelete.css';  // Importando o CSS
+import { VscTrash } from 'react-icons/vsc';  
+import './css/ButtonDelete.css';  
 
 export default function MyButtonDelete({ onClick }) {
   return (

@@ -27,7 +27,7 @@ export default function UpdateModuleClass() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        // Verifique se module é válido e atribua os valores de forma adequada
+        
         if (!module) {
             console.error("Módulo não encontrado.");
             return;
@@ -37,16 +37,16 @@ export default function UpdateModuleClass() {
         console.log({ finalModuleTitle });
     
         try {
-            // Atualizar o módulo
+            
             const updatedModule = await updateModule(module.id, finalModuleTitle);
             console.log("Módulo atualizado com sucesso:", updatedModule);
     
-            // Verifique se há uma aula selecionada e atualize a aula também
+            
             if (selectedClass) {
                 const finalClassTitle = classTitle.trim() === "" ? selectedClass.title : classTitle;
                 const finalClassUrl = classUrl.trim() === "" ? selectedClass.url : classUrl;
     
-                // Atualizar a aula
+                
                 const updatedClass = await updateClass(selectedClass.id, finalClassTitle, finalClassUrl);
                 console.log("Aula atualizada com sucesso:", updatedClass);
                 alert('Módulo e/ou Aula com sucesso!');
@@ -59,7 +59,7 @@ export default function UpdateModuleClass() {
     const handleDeleteModuleClass = async (clazzId) => {
         try {
             await deleteModuleClass(clazzId); 
-            setClasses((prevModules) => prevModules.filter((classes) => classes.id !== clazzId)); // Atualiza a lista
+            setClasses((prevModules) => prevModules.filter((classes) => classes.id !== clazzId)); 
             console.log("Módulo deletado com sucesso:", clazzId);
             alert('Aula deletada com sucesso!');
         } catch (error) {
@@ -86,10 +86,10 @@ export default function UpdateModuleClass() {
 
     const handleModuleClick = (moduleClass) => {
         if (selectedClass?.id === moduleClass.id) {
-            // Se o módulo clicado já estiver selecionado, desmarque-o
+            
             setSelectedClass(null);
         } else {
-            // Caso contrário, selecione o módulo
+         
             setSelectedClass(moduleClass);
         }
         console.log("Aula clicada:", moduleClass);

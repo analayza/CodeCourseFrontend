@@ -30,12 +30,12 @@ export default function ProfileConfiguration() {
     const handleDeleteClick = async (userId) => {
         try {
             if (user.type === "Aluno") {
-                // Chama o método para atualizar a senha do aluno
+  
                 const response = await deleteStudent(user.id);
                 console.log("Resposta da API (Aluno):", response);
                 navigate('/Login')
             } else if (user.type === "Professor") {
-                // Chama o método para atualizar a senha do professor
+             
                 const response = await deleteTeacher(user.id);
                 console.log("Resposta da API (Professor):", response);
                 navigate('/Login')
@@ -52,7 +52,7 @@ export default function ProfileConfiguration() {
             return;
         }
 
-        // Verifica se a senha antiga corresponde à senha salva
+    
         if (oldPassword !== user.password) {
             setMessage("A senha antiga não corresponde.");
             return;
@@ -60,18 +60,18 @@ export default function ProfileConfiguration() {
 
         try {
             if (user.type === "Aluno") {
-                // Chama o método para atualizar a senha do aluno
+               
                 const response = await updatePasswordStudent(user.id, oldPassword, newPassword);
                 console.log("Resposta da API (Aluno):", response);
                 setMessage("Senha atualizada com sucesso!");
             } else if (user.type === "Professor") {
-                // Chama o método para atualizar a senha do professor
+                
                 const response = await updatePasswordTeacher(user.id, oldPassword, newPassword);
                 console.log("Resposta da API (Professor):", response);
                 setMessage("Senha atualizada com sucesso!");
             }
 
-            // Limpa os campos após atualização
+            
             setOldPassword("");
             setNewPassword("");
         } catch (error) {

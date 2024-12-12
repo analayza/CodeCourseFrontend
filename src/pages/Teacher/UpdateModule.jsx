@@ -29,7 +29,7 @@ export default function UpdateModule() {
     const handleDeleteModule = async (moduleId) => {
         try {
             await deleteModule(moduleId); 
-            setModules((prevModules) => prevModules.filter((module) => module.id !== moduleId)); // Atualiza a lista
+            setModules((prevModules) => prevModules.filter((module) => module.id !== moduleId)); 
             console.log("Módulo deletado com sucesso:", moduleId);
             alert('Módulo deletado com sucesso!');
         } catch (error) {
@@ -55,7 +55,7 @@ export default function UpdateModule() {
 
     const handleModuleClick = (module) => {
         console.log("Módulo clicado:", module);
-        // Adicione a lógica desejada ao clicar em um módulo
+        
     };
 
     return (
