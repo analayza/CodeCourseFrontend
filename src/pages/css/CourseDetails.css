@@ -136,3 +136,10 @@
     border: none;
 }
 
+.button-acquire-course{
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+    margin-left: 790px;
+    margin-top: 80px;
+}

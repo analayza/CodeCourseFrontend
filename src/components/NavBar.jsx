@@ -15,19 +15,17 @@ export default function NavBar({ userName, userRole }){
             navigate('/Profile', { state: { user } });
         }
     };
+
+    const handleLogout = () => {
+        sessionStorage.removeItem("user");
+        navigate('/login');
+    };
     
 
     return(
         <nav className="navbar">
             <div className="navbar-container">
-                <div className="search-container">
-                    <input 
-                        type="text" 
-                        className="search-input" 
-                        placeholder="Digite o nome do curso que quer encontrar">
-                    </input>
-                    <button className="search-button">Pesquisar</button>
-                </div>
+                <button className='button-logout' onClick={handleLogout}>SAIR</button>
 
                 <div className="user-profile">
                     <img

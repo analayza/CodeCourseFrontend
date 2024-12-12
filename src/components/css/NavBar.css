@@ -12,37 +12,12 @@
     display: flex;
     align-items: center;
   }
-  
-  .search-container {
-    padding-left: 450px;
-    flex-grow: 1;
-    align-items: center;
-  }
-  
-  .search-input {
-    width: 350px;
-    height: 25px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-  }
-  
-  .search-button {
-    font-size: 16px;
-    background-color: #2C2C2C;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
-    height: 30px;
-    border: none;
-  }
-  
+    
   .user-profile {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-right: 40px;
+    margin-left: 1050px;
   }
   
   .user-name {
@@ -71,3 +46,15 @@
     border: 2px solid white;
   }
   
+  .button-logout{
+    position: relative;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    border: 5px;
+    color: rgb(248, 247, 247);
+    background-color: black;
+    cursor: pointer;
+    margin-left: 10px;
+    z-index: 10;
+}
