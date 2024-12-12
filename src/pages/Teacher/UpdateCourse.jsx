@@ -66,7 +66,7 @@ export default function UpdateCourse() {
         try {
             const updatedCourse = await updateCourse(course.id, finalCourseTitle, finalImageURL, finalCourseValue, finalDescription);
             console.log("Curso atualizado com sucesso:", updatedCourse);
-            alert('Curso atualizado com sucesso!');
+            //alert('Curso atualizado com sucesso!');
         } catch (error) {
             console.error("Erro ao atualizar o curso:", error);
         }

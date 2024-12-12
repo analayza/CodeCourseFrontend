@@ -40,6 +40,7 @@ export default function UpdateModuleClass() {
             
             const updatedModule = await updateModule(module.id, finalModuleTitle);
             console.log("Módulo atualizado com sucesso:", updatedModule);
+            alert('Módulo atualizado com sucesso!');
     
             
             if (selectedClass) {

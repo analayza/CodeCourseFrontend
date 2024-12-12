@@ -8,7 +8,6 @@ import CourseDetails from './pages/CourseDetails.jsx';
 import UpdateModule from './pages/Teacher/UpdateModule.jsx';
 import UpdateModuleClass from './pages/Teacher/UpdateModuleClass.jsx';
 import CourseCreation from './pages/Teacher/CourseCreationPage.jsx';
-import ProfileConfigurationTeacher from './pages/Teacher/ProfileConfiguration.jsx';
 import Login from './pages/LoginPage.jsx';
 import Register from './pages/RegisterPage.jsx';
 import NewModule from './pages/Teacher/NewModule.jsx';

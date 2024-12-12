@@ -247,7 +247,7 @@ export default function CourseDetails() {
                     ))}
                 </div>
                 <div className="div-buttons-update-delete" style={{display: visualizer}}>
-                    <MyButton className="my-button" colorButton="green" text="Atualizar Módulo" onClick={handleCourseActualization}/>
+                    <MyButton className="my-button" colorButton="green" text="Atualizar Curso" onClick={handleCourseActualization}/>
                     <MyButton className="my-button" colorButton="red" text="Deletar Curso" onClick={() => handleDeleteCourse(course.id)}/>
                 </div>
 

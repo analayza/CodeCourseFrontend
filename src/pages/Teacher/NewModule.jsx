@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { getNewModule } from "../../services/Teacher/NewModule"; 
 import '../css/NewModule.css';
 import MyCodeCourses from "../../components/CodeCourses";
 import MyArrowBack from "../../components/ArrowBack"; 
