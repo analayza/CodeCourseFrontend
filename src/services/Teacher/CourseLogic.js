@@ -1,19 +1,18 @@
+// courseLogic.js
 export const createCourse = async (formData) => {
-  const { title, image, value, description, idTeacher } = formData;
+  const { title, image, value, description } = formData;
 
-  if (!title || !image || !value || !description || !idTeacher) {
+  if (!title || !image || !value || !description) {
     throw new Error("Por favor, preencha todos os campos!");
   }
 
   const endpoint = "http://localhost:8083/course-app/course/save";
 
   const payload = {
-    id: 0, // Caso necessário
     title,
     image,
     value,
     description,
-    idTeacher, // Incluindo o ID do professor
   };
 
   try {
